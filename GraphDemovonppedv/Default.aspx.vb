@@ -16,14 +16,14 @@ Public Class _Default
     End Sub
 
     Protected Async Sub Button1_Click(sender As Object, e As EventArgs)
-        Dim tenantId = "d044494e-fc77-4ae0-8c6b-8b4520666035"
-        Dim ClientID = "ff6fc891-85b5-4998-a35a-6a7f0910744e"
+        Dim tenantId = "d044ddddddddddddddddd"
+        Dim ClientID = "ff6fddddddddddddddddddddddddddd"
         Dim authorityUri = $"https://login.microsoftonline.com/{tenantId}"
         Dim redirectUri = "http://localhost:44355"
         Dim scopes = {"https://graph.microsoft.com/.default"}
         Dim publicClient = PublicClientApplicationBuilder.Create(ClientID).WithAuthority(New Uri(authorityUri)).WithRedirectUri(redirectUri).Build()
         Dim sString = New System.Security.SecureString()
-        For Each ch As Char In "WDTkJp5.cwJP"
+        For Each ch As Char In "dddddddddddddddd"
             sString.AppendChar(ch)
         Next
         Try
@@ -32,7 +32,7 @@ Public Class _Default
                 .WithForceRefresh(True) _
                 .ExecuteAsync().Result.AccessToken
         Catch ex As Exception
-            Dim accessTokenRequest = publicClient.AcquireTokenByUsernamePassword(scopes, "WebChat@ppedv.onmicrosoft.com", sString)
+            Dim accessTokenRequest = publicClient.AcquireTokenByUsernamePassword(scopes, "xxxxxx@ppedv.onmicrosoft.com", sString)
             daToken = accessTokenRequest.ExecuteAsync().Result.AccessToken
 
         End Try
@@ -70,12 +70,11 @@ Public Class _Default
 
         Dim msgresponse As ChatMessage
 
-        msgresponse = Await graphClient.Teams("145db263-90e3-4cae-b401-0381b06ff2b5") _
-                .Channels("19:bd7758cea194476fb3627c65ad0bf5bc@thread.skype").Messages _
+        msgresponse = Await graphClient.Teams("145xxxxxxxxxxxxxxxxx") _
+                .Channels("19:bxxxxxxxxxxxxxxxxxxxx@thread.skype").Messages _
                 .Request() _
                 .AddAsync(ChatMessage)
-        'msgresponse.Id 1634907923055
-
+      
 
 
 
